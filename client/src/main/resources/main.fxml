@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ProgressBar?>
+<VBox fx:id="rootNode" alignment="CENTER" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(#fff 0%, #eee 10%, #ddd 90%, #bbb 100%);" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="com.geekbrains.geek.cloud.client.ClientController">
+    <StackPane fx:id="upperPanel" alignment="CENTER">
+        <VBox alignment="CENTER">
+            <Label>Введите логин:</Label>
+            <TextField fx:id="loginField" maxWidth="150" promptText="Login..."/>
+            <Label>Введите пароль:</Label>
+            <PasswordField fx:id="passField" maxWidth="150" promptText="Password..." onAction="#tryToAuth"/>
+            <Label>Введите никнейм:</Label>
+            <TextField fx:id="nickField" maxWidth="150" promptText="Nick..."/>
+            <HBox alignment="CENTER">
+                <Button text="Войти" onAction="#tryToAuth"/>
+                <Button text="Зарегестрироваться" onAction="#tryToReg"/>
+            </HBox>
+            <TextArea fx:id="messageErr" editable="false" VBox.vgrow="ALWAYS" />
+        </VBox>
+    </StackPane>
+    <VBox fx:id="bottomPanel" visible="false" managed="false">
+        <HBox>
+            <Button onAction="#pressOnUploadBtn" text="Отправить на сервер" focusTraversable="false"/>
+            <Button onAction="#pressOnDownloadBtn" text="Скачать с сервера" focusTraversable="false"/>
+            <Button onAction="#pressOnDeleteBtn" text="Удалить" focusTraversable="false"/>
+        </HBox>
+        <HBox>
+            <Label prefWidth="250">Список клиента</Label>
+            <Label prefWidth="250">Список сервера</Label>
+        </HBox>
+        <HBox>
+            <ListView fx:id="clientfilesList" VBox.vgrow="ALWAYS" />
+            <ListView fx:id="serverfilelist" VBox.vgrow="ALWAYS" />
+        </HBox>
+        <ProgressBar fx:id="loading" prefWidth="Infinity" progress="0"></ProgressBar>
+    </VBox>
+</VBox>
